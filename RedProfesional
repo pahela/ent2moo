@@ -1,0 +1,283 @@
+/*
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package entregable2;
+import java.util.Scanner;
+import java.util.TreeMap;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+/**
+ *
+ * @author p.hernandez.lazaro & r.jaime.capella
+ */
+public class RedProfesional{ 
+    
+    public static String leerLinea(){
+        Scanner lector = new Scanner(System.in);
+        return lector.nextLine();
+        
+    }
+    public static void main (String args[]){
+        
+        String nombre=new String();
+        String puesto=new String();
+        String empresa=new String();
+        String texto=new String();
+        String nom=new String();
+        String name=new String();
+        String res=new String();
+        int buck=0;
+        int a=0;
+        
+        TreeMap<String,Persona>contactos=new TreeMap();
+        ArrayList<Publicacion>publica=new ArrayList();
+
+
+        System.out.println("\t\t\t ▲\n\t\t\t▲ ▲");
+        System.out.println("Bienvenido, para darse de alta, siga los siguientes pasos");
+        System.out.println("\t¿Como te llamas?");
+        
+        nombre=leerLinea();
+        System.out.println("\t¿En que empresa trabajas?");
+        
+        empresa=leerLinea();
+        System.out.println("\t¿En que puesto?");
+        
+        puesto=leerLinea();
+        
+        
+        Persona persona=new Persona(nombre,puesto,empresa,Fecha.getFechaActual(),"Hola me llamo "+nombre);
+        
+       Persona contacto1=new Persona("Mortadelo","Agente secreto","T.I.A.",Fecha.getFechaActual(),"Busco tienda de disfraces, area Madrid");
+       Persona contacto2=new Persona("Filemon","Agente secreto", "T.I.A.",Fecha.getFechaActual(),"¿¿Donde esta el profesor Bacterio??");
+       Persona contacto3=new Persona ("El super", "Intendiente", "T.I.A.",Fecha.getFechaActual(),"Mortadelo!!");
+       Persona contacto4=new Persona ("Asterix", "Guerrero", "Fuerzas por la resistencia de la Galia",Fecha.getFechaActual(),"Estan locos estos romanos!" );
+       Persona contacto5=new Persona ("Conan", "Detective", "En el paro",Fecha.getFechaActual(),"Busco nuevos casos ha resolver");
+       Persona contacto6=new Persona ("Aquaman", "Superhéroe", "DC Comics",Fecha.getFechaActual(),"Busco nuevas experiencias en el area de animacion acuatica");
+       contactos.put("Mortadelo", contacto1);
+       contactos.put("Filemon", contacto2);
+       contactos.put("El super", contacto3);
+       contactos.put("Asterix", contacto4);
+       contactos.put("Conan", contacto5);
+       contactos.put("Aquaman", contacto6);
+       
+      
+       
+       Estado est=new Estado(Fecha.getFechaActual(),persona,"AHuelaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+       /*Publicacion pub0=new Publicacion(Fecha.getFechaActual(),persona,"Hola me llamo "+persona.getNombre());
+       Publicacion pub1=new Publicacion(Fecha.getFechaActual(),"Busco tienda de disfraces, area Madrid");
+       Publicacion pub2=new Publicacion(Fecha.getFechaActual(),"¿¿Donde esta el profesor Bacterio??");
+       Publicacion pub3=new Publicacion(Fecha.getFechaActual(),"Mortadelo!!");
+       Publicacion pub4=new Publicacion(Fecha.getFechaActual(),"Estan locos estos romanos!");
+       Publicacion pub5=new Publicacion(Fecha.getFechaActual(),"Busco nuevos casos ha resolver");
+       Publicacion pub6=new Publicacion(Fecha.getFechaActual(),"Busco nuevas experiencias en el area de animacion acuatica");
+       
+       publica.add(pub0);*/
+       
+       
+       
+        
+        
+        
+        while(!"si".equals(res)){
+            
+             System.out.println("-----");
+             System.out.println("Hola "+nombre+",\n"+"¿Que quieres hacer?");
+             System.out.println("-----");
+            System.out.println("'contactos': para ver la lista de contactos.");
+            System.out.println("'comentar' : para hacer un comentario en tu ultima publicacion");
+            System.out.println("'comentar+NombreContacto': para hacer un comentario sobre la última publicación de tu contacto ('NombreContacto')");
+            System.out.println("'publicaciones': para ver las publiaciones de un contacto.");
+            System.out.println("'publicaciones+contacto': para ver las publicaciones de un contacto concreto.");
+            System.out.println("'publicar': para publicar una nueva publicacion.");
+            System.out.println("'ayuda': para mostrar la ayuda (again).");
+            System.out.println("'salir': para salir de la red.");
+            System.out.println("-----");
+            System.out.print("> ");
+            String var=leerLinea();
+            
+        while (!"salir".equals(var))
+        {
+            
+        
+        if("contactos".compareTo(var)==0){
+           
+             System.out.println("\t>>Contactos de "+persona.getNombre()+"<<");
+             Iterator<Persona>it=contactos.values().iterator();
+             while(it.hasNext()){
+                 System.out.println(">>"+it.next());
+             }
+        
+        }
+        
+         if("comentar".compareTo(var)==0){
+            System.out.println("\n\t>>Comentario: ");
+                 String var1=leerLinea();
+             
+               Comentario usuari = new Comentario(persona.getNombre(),var1);
+               persona.getUltimaPublicacion().addComentario(usuari);
+               
+                 
+           }
+         
+         if(var.startsWith("comentar ")) {
+            String[] var0 = var.split(" ",2);
+            nom=var0[1];
+            System.out.println("\n\t>>Comentario: ");
+            Iterator<Persona> it=contactos.values().iterator();
+            while(it.hasNext()&&a==0){
+                Persona per=it.next();
+                int max=contactos.size();
+                
+                buck++;
+
+                if(per.getNombre().equalsIgnoreCase(nom)){
+                    /*Publicacion pub=new Publicacion(Fecha.getFechaActual(),per.getTexto());
+                    System.out.println(pub);
+                    buck--;*/
+                    //Aqui s'afegiria comentari a la ultima publicacio de "nom"/"per.getNombre()"
+                   String var2=leerLinea();
+               String comentario=var2;
+               Comentario pers = new Comentario(per.getNombre(),comentario);
+               per.getUltimaPublicacion().addComentario(pers);
+                }
+                
+               if(buck==max){
+                   
+                   
+               
+                     
+            System.out.println("No hay tal contacto en tu lista\nUsa 'contactos' para ver tus contactos");
+            a++;
+            }
+                }
+        }
+         
+            
+            
+            
+                 
+                 
+ 
+            
+        
+        
+        
+        
+        if("publicaciones".compareTo(var)==0){
+            System.out.println("\t>>Publicaciones de "+persona.getNombre()+"<<");
+            Iterator<Publicacion>it=publica.listIterator();
+             while(it.hasNext()){
+                 System.out.println(it.next());
+                 
+                 
+ 
+            
+        }
+        }
+             
+        if(var.startsWith("publicaciones ")) {
+            String[] var0 = var.split(" ",2);
+            nom=var0[1];
+            System.out.println("\t>>Publicaciones de "+nom+"<<");
+            Iterator<Persona> it=contactos.values().iterator();
+            while(it.hasNext()&&a==0){
+                Persona per=it.next();
+                int max=contactos.size();
+                
+                buck++;
+
+                if(per.getNombre().equalsIgnoreCase(nom)){
+                    /*Publicacion pub=new Publicacion(Fecha.getFechaActual(),per.getTexto());
+                    System.out.println(pub);
+                    buck--;*/
+                   
+                }
+               if(buck==max){
+                   
+                   
+               
+                     
+            System.out.println("No hay tal contacto en tu lista\nUsa 'contactos' para ver tus contactos");
+            a++;
+            }
+                }
+        }
+            
+            
+            
+                
+             
+        
+         /*if(var.startsWith("agregar")){
+            
+            String[]var2=var.split(" ",2);
+            name=var2[1];
+            Iterator<Persona> it=contactos.values().iterator();
+            while(it.hasNext()){
+                if(!it.next().getNombre().equalsIgnoreCase(nom)){
+                    persona.agregarContacto(it.next());
+                    System.out.println("Contacto agregado");
+                    
+                }else{
+                    System.out.println("El contacto está en tu lista");
+                }
+        }  
+        }*/
+            
+        if(var.startsWith("publicar")){
+            System.out.println(">>Nueva publicacion<<");
+            
+            
+            if(!var.contains(" ")){
+                System.out.print("\t Entrada incorrecta\n");
+            }else{
+                String[] var1 = var.split(" ",2);
+            
+            
+           if(var1[1].isEmpty()){
+                System.out.print("\tMissatge buit\n");
+              
+           }else{
+               texto=var1[1];
+                /*Publicacion publact=new Publicacion (Fecha.getFechaActual(),texto);
+                publica.add(publact);
+                System.out.println(publact);*/  
+           }
+            
+            
+            }
+        }
+
+        if("ayuda".compareTo(var)==0){
+            System.out.println("Escoge una opcion: ");
+            System.out.println("'contactos': para ver la lista de contactos.");
+             System.out.println("'comentar' : para hacer un comentario en tu ultima publicacion");
+            System.out.println("'comentar+NombreContacto': para hacer un comentario sobre la última publicación de tu contacto ('NombreContacto')");
+            System.out.println("'publicaciones': para ver las publiaciones de un contacto.");
+            System.out.println("'publicaciones+contacto': para ver las publicaciones de un contacto concreto.");
+            System.out.println("'publicar': para publicar una nueva publicacion.");
+            System.out.println("'ayuda': para mostrar la ayuda (again).");
+            System.out.println("'salir': para salir de la red.");
+            
+        }
+        System.out.println("-----");
+        System.out.println(">>Introduce nueva orden: "+"Escribe ayuda si no sabes que hacer<<");
+        System.out.print("> ");
+        var=leerLinea();
+        buck=0;
+        
+      }
+        System.out.println("¿Seguro que quiere salir? (si/no)");
+            res=leerLinea();
+        }
+        System.out.println("\t\t\t ▲\n\t\t\t▲ ▲");
+              
+        
+          
+          
+      }
+    }
