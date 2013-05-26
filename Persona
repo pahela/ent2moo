@@ -1,0 +1,81 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package entregable2;
+import java.util.Iterator; 
+import java.util.TreeMap;
+import java.util.ArrayList;
+
+/**
+ *
+ * @author pablo
+ */
+public class Persona {
+    private String nombre;
+    private String puesto;
+    private String empresa;
+    private String texto;
+    private long fecha;
+    private TreeMap<String,Persona>contactos;
+    private ArrayList<Publicacion>publica;
+    
+    
+    public Persona(String nombre,String puesto, String empresa,long fecha, String texto){
+       this.nombre=nombre;
+       this.puesto=puesto;
+       this.empresa=empresa;
+       this.fecha=fecha;
+       this.texto=texto;
+       
+       
+    }
+    
+    public String getEmpresa(){
+        return this.empresa;
+    }
+    public String getNombre(){
+        return this.nombre;
+    }
+    public String getPuesto(){
+        return this.puesto;
+    }
+    
+    public String getTexto(){
+        return this.texto;
+    }
+
+    public long getFecha() {
+        return this.fecha;
+    }
+    
+    public Publicacion getUltimaPublicacion(){
+        return publica.get(0);
+    }
+    
+    public void agregarContacto(Persona contacto){
+        contactos.put(contacto.getNombre(), contacto);
+    }
+    public void publicar(Publicacion mensaje){
+        publica.add(mensaje);
+    }
+    public Persona buscarContacto(String nombre){
+        if(contactos.containsKey(nombre)){
+            return contactos.get(nombre);
+        }else{
+            return null;
+        }
+    }
+    public Iterator<Persona> iteradorContactos(){
+        Iterator<Persona> it = contactos.values().iterator();
+        return it;
+    }
+    public String toString(){
+        return "Nom: "+this.nombre+"\t\tPuesto: "+this.puesto+"\t\tEmpresa: "+this.empresa;
+        
+    }
+    public int compareTo(Object o){
+        return 0;
+    }
+    
+}
