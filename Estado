@@ -1,0 +1,19 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package entregable2;
+
+/**
+ *
+ * @author pablo
+ */
+public class Estado extends Publicacion {
+    private String texto;
+    
+    public Estado(long fecha, Persona autor,String texto){
+       super(fecha,autor);
+       this.texto=texto;
+       
+   }
+}
