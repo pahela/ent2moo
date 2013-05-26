@@ -1,0 +1,40 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package entregable2;
+
+import java.util.TreeMap;
+import java.util.ArrayList;
+/**
+ *
+ * @author p.hernandez.lazaro & r.jaime.capella
+ */
+
+public class Publicacion {
+    protected long fecha;
+    protected Persona autor;
+    protected ArrayList<Comentario> comentaris;
+    
+    
+    public Publicacion(long fecha, Persona autor){
+        this.fecha=fecha;
+        this.autor=autor;
+        this.comentaris=new ArrayList<Comentario>();
+        
+    }
+    
+    /*public String toString(){
+        String fechaString=Fecha.fechaNumericaString(fecha);
+        return fechaString+"-> "+texto+"\n";
+        
+    }*/
+    public String getCabecera (){
+        return null;
+    }
+    public void addComentario(Comentario c){
+        comentaris.add(c);
+        
+        
+    }
+}
