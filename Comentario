@@ -1,0 +1,25 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package entregable2;
+
+/**
+ *
+ * @author pablo
+ */
+public class Comentario {
+    private String autor;
+    private String texto;
+    
+    public Comentario(String autor, String texto){
+        this.autor=autor;
+        this.texto=texto;
+    }
+    
+    public String toString(){
+        return null;
+    }
+    
+}
+
