@@ -16,4 +16,8 @@ public class Estado extends Publicacion {
        this.texto=texto;
        
    }
+    public String toString(){
+        return ">"+this.texto;
+        
+    }
 }
