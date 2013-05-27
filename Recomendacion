@@ -6,17 +6,22 @@ package entregable2;
 
 /**
  *
- * @author pablo
+ * @author Rutxi94
  */
-public class Recomendacion extends Publicacion{
+public class Recomendacion extends Publicacion {
+    
     private Persona contOferta;
     private Persona contRecomendado;
     private String puesto;
     private Persona contRecomienda;
     
     public Recomendacion(long fecha, Persona autor){
-       super(fecha,autor);
-   }
-            
+        super(fecha,autor);
+    }
+    
+    public String getCabecera(){
+        
+        return this.autor.getNombre()+" ha recomendado "+this.autor+" para la oferta de "+fecha+" publicada por "+autor.getNombre()+"("+fecha+")";
+        
+    }
 }
-
