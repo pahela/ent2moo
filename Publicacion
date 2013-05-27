@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author p.hernandez.lazaro & r.jaime.capella
  */
 
-public class Publicacion {
+public abstract class Publicacion {
     protected long fecha;
     protected Persona autor;
     protected ArrayList<Comentario> comentaris;
