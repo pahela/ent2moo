@@ -6,6 +6,7 @@ package entregable2;
 
 import java.util.TreeMap;
 import java.util.ArrayList;
+import java.util.Iterator;
 /**
  *
  * @author p.hernandez.lazaro & r.jaime.capella
@@ -24,17 +25,22 @@ public abstract class Publicacion {
         
     }
     
-    /*public String toString(){
-        String fechaString=Fecha.fechaNumericaString(fecha);
-        return fechaString+"-> "+texto+"\n";
+    public String toString(){
         
-    }*/
-    public String getCabecera (){
-        return null;
+        String string = this.getCabecera();
+        
+        Iterator<Comentario> comentari = this.comentaris.iterator();
+        while(comentari.hasNext()){
+            string ="\n\t"+comentari.next();
+        }
+        return string;
     }
+    public abstract String getCabecera();
+    
     public void addComentario(Comentario c){
         comentaris.add(c);
-        
-        
+    }
+    public Persona getAutor(){
+        return this.autor;
     }
 }
