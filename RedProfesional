@@ -34,6 +34,7 @@ public class RedProfesional{
         
         TreeMap<String,Persona>contactos=new TreeMap();
         ArrayList<Publicacion>publica=new ArrayList();
+        ArrayList<Comentario>coment= new ArrayList();
 
 
         System.out.println("\t\t\t ▲\n\t\t\t▲ ▲");
@@ -66,16 +67,27 @@ public class RedProfesional{
        
       
        
-       Estado est=new Estado(Fecha.getFechaActual(),persona,"AHuelaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-       /*Publicacion pub0=new Publicacion(Fecha.getFechaActual(),persona,"Hola me llamo "+persona.getNombre());
-       Publicacion pub1=new Publicacion(Fecha.getFechaActual(),"Busco tienda de disfraces, area Madrid");
-       Publicacion pub2=new Publicacion(Fecha.getFechaActual(),"¿¿Donde esta el profesor Bacterio??");
-       Publicacion pub3=new Publicacion(Fecha.getFechaActual(),"Mortadelo!!");
-       Publicacion pub4=new Publicacion(Fecha.getFechaActual(),"Estan locos estos romanos!");
-       Publicacion pub5=new Publicacion(Fecha.getFechaActual(),"Busco nuevos casos ha resolver");
-       Publicacion pub6=new Publicacion(Fecha.getFechaActual(),"Busco nuevas experiencias en el area de animacion acuatica");
+       Publicacion est=new Estado(Fecha.getFechaActual(),persona,"AHuelaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+       Comentario com=new Comentario(persona.getNombre(),"holaaaa");
+       coment.add(com);
        
-       publica.add(pub0);*/
+       publica.add(est);
+       
+       
+       
+       Publicacion pub1=new Estado(Fecha.getFechaActual(),contacto1,"Busco tienda de disfraces, area Madrid");
+       persona.buscarContacto(contacto1.getNombre()).publicar(pub1);
+       Publicacion pub2=new Estado(Fecha.getFechaActual(),contacto2,"¿¿Donde esta el profesor Bacterio??");
+       persona.buscarContacto(contacto2.getNombre()).publicar(pub2);
+       Publicacion pub3=new Estado(Fecha.getFechaActual(),contacto3,"Mortadelo!!");
+       persona.buscarContacto(contacto3.getNombre()).publicar(pub3);
+       Publicacion pub4=new Estado(Fecha.getFechaActual(),contacto4,"Estan locos estos romanos!");
+       persona.buscarContacto(contacto4.getNombre()).publicar(pub4);
+       Publicacion pub5=new Estado(Fecha.getFechaActual(),contacto5,"Busco nuevos casos a resolver");
+       persona.buscarContacto(contacto5.getNombre()).publicar(pub5);
+       Publicacion pub6=new Estado(Fecha.getFechaActual(),contacto6,"Busco nuevas experiencias en el area de animacion acuatica");
+       persona.buscarContacto(contacto6.getNombre()).publicar(pub6);
+      
        
        
        
@@ -182,18 +194,20 @@ public class RedProfesional{
         if(var.startsWith("publicaciones ")) {
             String[] var0 = var.split(" ",2);
             nom=var0[1];
+            
             System.out.println("\t>>Publicaciones de "+nom+"<<");
             Iterator<Persona> it=contactos.values().iterator();
             while(it.hasNext()&&a==0){
                 Persona per=it.next();
                 int max=contactos.size();
                 
+                
                 buck++;
 
                 if(per.getNombre().equalsIgnoreCase(nom)){
-                    /*Publicacion pub=new Publicacion(Fecha.getFechaActual(),per.getTexto());
+                    Publicacion pub=new Estado(Fecha.getFechaActual(),per,per.getTexto());
                     System.out.println(pub);
-                    buck--;*/
+                    buck--;
                    
                 }
                if(buck==max){
@@ -243,9 +257,9 @@ public class RedProfesional{
               
            }else{
                texto=var1[1];
-                /*Publicacion publact=new Publicacion (Fecha.getFechaActual(),texto);
+                Publicacion publact=new Estado(Fecha.getFechaActual(),persona, texto);
                 publica.add(publact);
-                System.out.println(publact);*/  
+                System.out.println(publact);  
            }
             
             
@@ -280,4 +294,4 @@ public class RedProfesional{
           
           
       }
-    }
+}
