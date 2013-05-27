@@ -11,8 +11,14 @@ package entregable2;
 public class EsContacto extends Publicacion {
    private Persona elContacto;
    
+   
    public EsContacto(long fecha, Persona autor, Persona elContacto){
        super(fecha,autor);
        this.elContacto=elContacto;
+       
    }
+   public String toString(){
+        return this.autor+" es ahora contacto de "+this.elContacto;
+        
+    }
 }
