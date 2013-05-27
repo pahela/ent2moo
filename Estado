@@ -20,4 +20,10 @@ public class Estado extends Publicacion {
         return ">"+this.texto;
         
     }
+    
+    public String getCabecera(){
+        
+        return this.autor.getNombre()+" "+fecha;
+        
+    }
 }
