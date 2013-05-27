@@ -21,4 +21,10 @@ public class EsContacto extends Publicacion {
         return this.autor+" es ahora contacto de "+this.elContacto;
         
     }
+   
+   public String getCabecera(){
+        
+        return this.autor.getNombre()+" es ahora contacto de "+autor.getNombre()+"("+fecha+")";
+         
+    }
 }
